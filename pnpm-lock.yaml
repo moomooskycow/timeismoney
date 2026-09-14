@@ -4,75 +4,77 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  '@microsoft/recognizers-text-suite':
-    specifier: ^1.3.1
-    version: 1.3.1
-  money:
-    specifier: ^0.2.0
-    version: 0.2.0
+importers:
 
-devDependencies:
-  '@commitlint/cli':
-    specifier: ^20.5.3
-    version: 20.5.3(@types/node@26.2.0)(typescript@7.0.2)
-  '@commitlint/config-conventional':
-    specifier: ^20.5.3
-    version: 20.5.3
-  '@vitest/coverage-v8':
-    specifier: ^3.1.2
-    version: 3.2.3(vitest@3.2.3)
-  '@vitest/ui':
-    specifier: ^3.1.2
-    version: 3.2.3(vitest@3.2.3)
-  commander:
-    specifier: ^14.0.3
-    version: 14.0.3
-  esbuild:
-    specifier: ^0.28.2
-    version: 0.28.2
-  eslint:
-    specifier: ^8.57.0
-    version: 8.57.1
-  eslint-config-prettier:
-    specifier: ^10.1.8
-    version: 10.1.8(eslint@8.57.1)
-  eslint-plugin-import:
-    specifier: ^2.32.0
-    version: 2.32.0(eslint@8.57.1)
-  eslint-plugin-jsdoc:
-    specifier: ^50.6.11
-    version: 50.8.0(eslint@8.57.1)
-  eslint-plugin-prettier:
-    specifier: ^5.5.6
-    version: 5.5.6(eslint-config-prettier@10.1.8)(eslint@8.57.1)(prettier@3.9.6)
-  glob:
-    specifier: ^13.0.6
-    version: 13.0.6
-  husky:
-    specifier: ^9.1.7
-    version: 9.1.7
-  jscodeshift:
-    specifier: ^17.4.0
-    version: 17.4.0
-  jsdom:
-    specifier: ^28.1.0
-    version: 28.1.0
-  lint-staged:
-    specifier: ^16.4.0
-    version: 16.4.0
-  prettier:
-    specifier: ^3.9.6
-    version: 3.9.6
-  puppeteer:
-    specifier: ^22.3.0
-    version: 22.15.0(typescript@7.0.2)
-  standard-version:
-    specifier: ^9.5.0
-    version: 9.5.0
-  vitest:
-    specifier: ^3.1.2
-    version: 3.2.3(@types/node@26.2.0)(@vitest/ui@3.2.3)(jsdom@28.1.0)
+  .:
+    dependencies:
+      '@microsoft/recognizers-text-suite':
+        specifier: ^1.3.1
+        version: 1.3.1
+      money:
+        specifier: ^0.2.0
+        version: 0.2.0
+    devDependencies:
+      '@commitlint/cli':
+        specifier: ^20.5.3
+        version: 20.5.3(@types/node@26.2.0)(typescript@7.0.2)
+      '@commitlint/config-conventional':
+        specifier: ^21.2.2
+        version: 21.2.2
+      '@vitest/coverage-v8':
+        specifier: ^3.1.2
+        version: 3.2.3(vitest@3.2.3)
+      '@vitest/ui':
+        specifier: ^3.1.2
+        version: 3.2.3(vitest@3.2.3)
+      commander:
+        specifier: ^14.0.3
+        version: 14.0.3
+      esbuild:
+        specifier: ^0.28.2
+        version: 0.28.2
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
+      eslint-config-prettier:
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@8.57.1)
+      eslint-plugin-import:
+        specifier: ^2.32.0
+        version: 2.32.0(eslint@8.57.1)
+      eslint-plugin-jsdoc:
+        specifier: ^50.6.11
+        version: 50.8.0(eslint@8.57.1)
+      eslint-plugin-prettier:
+        specifier: ^5.5.6
+        version: 5.5.6(eslint-config-prettier@10.1.8)(eslint@8.57.1)(prettier@3.9.6)
+      glob:
+        specifier: ^13.0.6
+        version: 13.0.6
+      husky:
+        specifier: ^9.1.7
+        version: 9.1.7
+      jscodeshift:
+        specifier: ^17.4.0
+        version: 17.4.0
+      jsdom:
+        specifier: ^28.1.0
+        version: 28.1.0
+      lint-staged:
+        specifier: ^16.4.0
+        version: 16.4.0
+      prettier:
+        specifier: ^3.9.6
+        version: 3.9.6
+      puppeteer:
+        specifier: ^22.3.0
+        version: 22.15.0(typescript@7.0.2)
+      standard-version:
+        specifier: ^9.5.0
+        version: 9.5.0
+      vitest:
+        specifier: ^3.1.2
+        version: 3.2.3(@types/node@26.2.0)(@vitest/ui@3.2.3)(jsdom@28.1.0)
 
 packages:
 
@@ -542,12 +544,12 @@ packages:
       - typescript
     dev: true
 
-  /@commitlint/config-conventional@20.5.3:
-    resolution: {integrity: sha512-j34Qqeaa152chJgz2ysyk0BCpHenJn1lV0Rx0VXf8k3ccQcED+48EZrzMvo9jLmJUyBrrBwvu89I+2er4gW7QQ==}
-    engines: {node: '>=v18'}
+  /@commitlint/config-conventional@21.2.2:
+    resolution: {integrity: sha512-NxA37SZviusFUEYOQZ5hNnZ1h7O/KiemPkxjOlpzKJNnWxThiwc6/SaZhaPa8fyLvfRBAywhQhJJk8XESHWlpQ==}
+    engines: {node: '>=22.12.0'}
     dependencies:
-      '@commitlint/types': 20.5.0
-      conventional-changelog-conventionalcommits: 9.3.1
+      '@commitlint/types': 21.2.0
+      conventional-changelog-conventionalcommits: 10.3.0
     dev: true
 
   /@commitlint/config-validator@20.5.0:
@@ -685,6 +687,14 @@ packages:
       picocolors: 1.1.1
     dev: true
 
+  /@commitlint/types@21.2.0:
+    resolution: {integrity: sha512-7zVFCDB2reMvJH5dmbKnOQPjZEvjdJTH8jc0U/PIPU1r3/+vf5pD1HlfitV2MWsWXrvu7u39iY1lyLUPOaN0Gw==}
+    engines: {node: '>=22.12.0'}
+    dependencies:
+      conventional-commits-parser: 7.1.2
+      picocolors: 1.1.1
+    dev: true
+
   /@conventional-changelog/git-client@2.7.0:
     resolution: {integrity: sha512-j7A8/LBEQ+3rugMzPXoKYzyUPpw/0CBQCyvtTR7Lmu4olG4yRC/Tfkq79Mr3yuPs0SUitlO2HwGP3gitMJnRFw==}
     engines: {node: '>=18'}
@@ -700,6 +710,11 @@ packages:
       '@simple-libs/child-process-utils': 1.0.2
       '@simple-libs/stream-utils': 1.2.0
       semver: 7.8.5
+    dev: true
+
+  /@conventional-changelog/template@1.3.0:
+    resolution: {integrity: sha512-GsCw/qu92GI0EX6s7fxUi/SG1lmFjG9XZivxxEDZXqztuQKCn5o5wKdz4v005zci0Md7EZzgAwmQLoIEDZoaow==}
+    engines: {node: '>=22'}
     dev: true
 
   /@csstools/color-helpers@6.0.1:
@@ -1673,6 +1688,11 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
+  /@simple-libs/stream-utils@2.0.0:
+    resolution: {integrity: sha512-fCTuZK4QBa+39Oz9l4OGfJfz+GpwCp3AqO7Zch3to99xHPgstVsRFpeQ8LNd2o1Gv8raL2mCFwiaHh7bFSp5DQ==}
+    engines: {node: '>=22'}
+    dev: true
+
   /@tootallnate/quickjs-emscripten@0.23.0:
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
     dev: true
@@ -2115,6 +2135,11 @@ packages:
 
   /argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+    dev: true
+
+  /argue-cli@3.1.0:
+    resolution: {integrity: sha512-DhBpBfXL4SS2uC0N922MMajKR3CdrTG0u2or1PNYgXMsrSzViJrbtvT0nCLlLGUI0plam/ZZCs7aAauHtW9thw==}
+    engines: {node: '>=22'}
     dev: true
 
   /array-buffer-byte-length@1.0.2:
@@ -2620,6 +2645,13 @@ packages:
     resolution: {integrity: sha512-IpVePh16EbbB02V+UA+HQnnPIohgXvJRxHcS5+Uwk4AT5LjzCZJm5sp/yqs5C6KZJ1jMsV4paEV13BN1pvDuxQ==}
     dev: true
 
+  /conventional-changelog-conventionalcommits@10.3.0:
+    resolution: {integrity: sha512-qag0zFD867Qq1DK0jAWicyWlEMS1FFC/BLVLISaoeI7Y6Em6aWchk7BCkhOTsecRpMsV6qX41XmlNnghiiTmSw==}
+    engines: {node: '>=22'}
+    dependencies:
+      '@conventional-changelog/template': 1.3.0
+    dev: true
+
   /conventional-changelog-conventionalcommits@4.6.3:
     resolution: {integrity: sha512-LTTQV4fwOM4oLPad317V/QNQ1FY4Hju5qeBIM1uTHbrnCE+Eg4CdRZ3gO2pUeR+tzWdp80M2j3qFFEDWVqOV4g==}
     engines: {node: '>=10'}
@@ -2627,13 +2659,6 @@ packages:
       compare-func: 2.0.0
       lodash: 4.17.21
       q: 1.5.1
-    dev: true
-
-  /conventional-changelog-conventionalcommits@9.3.1:
-    resolution: {integrity: sha512-dTYtpIacRpcZgrvBYvBfArMmK2xvIpv2TaxM0/ZI5CBtNUzvF2x0t15HsbRABWprS6UPmvj+PzHVjSx4qAVKyw==}
-    engines: {node: '>=18'}
-    dependencies:
-      compare-func: 2.0.0
     dev: true
 
   /conventional-changelog-core@4.2.4:
@@ -2758,6 +2783,15 @@ packages:
     dependencies:
       '@simple-libs/stream-utils': 1.2.0
       meow: 13.2.0
+    dev: true
+
+  /conventional-commits-parser@7.1.2:
+    resolution: {integrity: sha512-O+x4N2yH+ijvqWlIyTHsXTAP+algNWgGbjY2duCe8w2vUMvUB95cLRslCPfTMQyLAKlet3bhZTdu6ozn4M+QJQ==}
+    engines: {node: '>=22'}
+    hasBin: true
+    dependencies:
+      '@simple-libs/stream-utils': 2.0.0
+      argue-cli: 3.1.0
     dev: true
 
   /conventional-recommended-bump@6.1.0:
