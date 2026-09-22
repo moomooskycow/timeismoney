@@ -1,0 +1,23 @@
+product:
+  name: Timeismoney
+  description: Release notes and changelog automation for phrazzld/timeismoney.
+audience: developer
+voice: clear, concrete, and specific to shipped behavior
+changelog:
+  source: auto
+artifacts:
+  markdown: docs/releases/{version}.md
+  plaintext: null
+  html: null
+  json: docs/releases/releases.json
+  rss: null
+release:
+  profile: synthesis-only
+model:
+  policy: balanced
+  primary: null
+  fallbacks: []
+budget:
+  max_input_tokens: 12000
+  max_output_tokens: 1200
+  max_usd: null
