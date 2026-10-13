@@ -55,6 +55,8 @@ import { SECURITY_CONFIG } from '../../../scripts/security-config.js';
 describe('Security Audit System', () => {
   beforeEach(() => {
     resetTestMocks();
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2024-01-01T00:00:00.000Z'));
 
     // Mock console methods
     vi.spyOn(console, 'log').mockImplementation(() => {});
@@ -66,6 +68,7 @@ describe('Security Audit System', () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.useRealTimers();
   });
 
   // Mock audit data for testing
@@ -460,8 +463,9 @@ describe('Security Audit System', () => {
 
       await main();
 
-      // Should not crash and should handle gracefully
-      expect(process.exit).toHaveBeenCalledWith(0);
+      // Malformed findings must fail closed instead of reporting a clean audit.
+      expect(process.exit).toHaveBeenCalledWith(1);
+      expect(process.exit).not.toHaveBeenCalledWith(0);
     });
   });
 });
