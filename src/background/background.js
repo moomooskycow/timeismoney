@@ -145,4 +145,3 @@ initializeIcon().catch((err) => {
 
 // Log service worker startup
 logger.info('Time Is Money background service worker initialized');
-
