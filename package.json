@@ -16,11 +16,12 @@
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,json,css,html}\"",
-    "test": "vitest run",
-    "test:all": "vitest run",
+    "test": "pnpm run test:background && vitest run",
+    "test:all": "pnpm run test:background && vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
-    "test:unit": "vitest run src/__tests__/unit",
+    "test:unit": "pnpm run test:background && vitest run src/__tests__/unit",
+    "test:background": "node --test scripts/test-background-update.js",
     "test:integration": "vitest run src/__tests__/integration",
     "test:dom": "vitest run src/__tests__/dom",
     "test:visual": "vitest run src/__tests__/visual/specs",
@@ -79,3 +80,4 @@
     "money": "^0.2.0"
   }
 }
+
