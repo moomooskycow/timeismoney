@@ -73,14 +73,8 @@ function handleExtensionInstalled(details) {
         return undefined; // Explicit return to satisfy promise chain
       })
       .catch((error) => {
-        logger.error('Failed to read existing settings during extension update:', error);
-        // If we can't read settings, use defaults as fallback
-        saveSettings(DEFAULT_SETTINGS).catch((failError) => {
-          logger.error(
-            'Failed to save default settings after read error during update:',
-            failError
-          );
-        });
+        // An unavailable read or failed migration is not permission to reset saved settings.
+        logger.error('Failed to preserve settings during extension update:', error);
       });
   }
 }
@@ -151,3 +145,4 @@ initializeIcon().catch((err) => {
 
 // Log service worker startup
 logger.info('Time Is Money background service worker initialized');
+
