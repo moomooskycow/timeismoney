@@ -11,12 +11,15 @@ permissions:
 jobs:
   auto-merge:
     name: Auto-merge dependabot PRs
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, hetzner-ci, timeismoney-ci]
     if: github.actor == 'dependabot[bot]'
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
 
       - name: Check update type and enable auto-merge
         run: |
