@@ -76,7 +76,18 @@ function applySeverityPolicy(vulnerabilities) {
   if (allowList && allowList.length > 0) {
     criticalVulnerabilities = criticalVulnerabilities.filter((vuln) => {
       // Check if this vulnerability ID is in the allowList
-      const isAllowed = allowList.some((allowed) => allowed.id === vuln.id);
+      const isAllowed = allowList.some((allowed) => {
+        if (allowed.id !== vuln.id || !/^\d{4}-\d{2}-\d{2}$/.test(allowed.expires)) {
+          return false;
+        }
+        const expires = new Date(`${allowed.expires}T00:00:00.000Z`);
+        // Exceptions expire at the start of the specified UTC date. Invalid dates fail closed.
+        return (
+          Number.isFinite(expires.getTime()) &&
+          expires.toISOString().slice(0, 10) === allowed.expires &&
+          expires.getTime() > Date.now()
+        );
+      });
       return !isAllowed;
     });
   }
@@ -296,7 +307,7 @@ function generateSecurityReport(allVulnerabilities, criticalVulnerabilities) {
   if (allowList && allowList.length > 0) {
     report += `## Allowlist
 
-The following vulnerabilities are temporarily approved and will not block builds:
+Configured exceptions apply only before their expiration date (00:00 UTC). Expired or invalid entries do not bypass the failure threshold:
 
 `;
 
