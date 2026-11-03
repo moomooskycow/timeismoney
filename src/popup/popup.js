@@ -16,25 +16,23 @@ import * as logger from '../utils/logger.js';
  */
 export const restoreOptions = () => {
   const status = document.getElementById('status');
+  const enable = document.getElementById('enabled');
+  enable.disabled = true;
+
   getSettings()
     .then((settings) => {
-      document.getElementById('enabled').checked = !settings.disabled;
+      enable.checked = !settings.disabled;
+      enable.disabled = false;
       // Clear any previous error messages
       status.textContent = '';
       status.classList.remove('error');
     })
     .catch((error) => {
       logger.error('Storage operation failed:', error.message);
-      // Show user-friendly error message
+      // Keep the error visible while the toggle is unavailable. Reopening the popup retries.
       status.textContent =
         chrome.i18n.getMessage('loadError') || 'Failed to load your settings. Please try again.';
       status.classList.add('error');
-
-      // Clear error after 5 seconds
-      setTimeout(() => {
-        status.textContent = '';
-        status.classList.remove('error');
-      }, 5000);
     });
 };
 
@@ -48,8 +46,16 @@ export const restoreOptions = () => {
  */
 export function handleEnableToggle(event) {
   const status = document.getElementById('status');
+  const enable = event.target;
+  if (enable.disabled) {
+    return;
+  }
 
-  saveSettings({ disabled: !event.target.checked })
+  const previousEnabled = !enable.checked;
+  // Serialize changes so a failed save cannot revert a newer user selection.
+  enable.disabled = true;
+
+  saveSettings({ disabled: previousEnabled })
     .then(() => {
       // Clear any previous error messages
       status.textContent = '';
@@ -64,13 +70,16 @@ export function handleEnableToggle(event) {
       status.classList.add('error');
 
       // Revert the toggle to its previous state since the save failed
-      event.target.checked = !event.target.checked;
+      enable.checked = previousEnabled;
 
       // Clear error after 5 seconds
       setTimeout(() => {
         status.textContent = '';
         status.classList.remove('error');
       }, 5000);
+    })
+    .finally(() => {
+      enable.disabled = false;
     });
 }
 
